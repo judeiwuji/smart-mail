@@ -1,0 +1,26 @@
+{
+    "author": "judeiwuji@gmail.com",
+    "name": "Smart Mail - Gmail Copilot",
+    "description": "Mail automation with summarising and reply suggestions",
+    "version": "0.1",
+    "side_panel": {
+        "default_path": "index.html"
+    },
+    "permissions": [
+        "sidePanel"
+    ],
+    "host_permissions": [
+        "https://mail.google.com/"
+    ],
+    "manifest_version": 3,
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "*.map"
+            ],
+            "matches": [
+                "https://mail.google.com/*"
+            ]
+        }
+    ]
+}
