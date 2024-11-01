@@ -11,12 +11,6 @@ import { RouterOutlet } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'smart-mail';
-  count = signal(0);
-  doubleCount = computed(() => this.count() * 2);
 
-  ngOnInit(): void {
-    setInterval(() => {
-      this.count.update((value) => value + 1);
-    });
-  }
+  ngOnInit(): void {}
 }
