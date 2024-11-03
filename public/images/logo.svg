@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   data-v-fde0c5aa=""
+   viewBox="0 0 119.99999 120"
+   class="iconAbove"
+   version="1.1"
+   id="svg4"
+   sodipodi:docname="default-edit.svg"
+   inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
+   width="120"
+   height="120"
+   inkscape:export-filename="favicon-120x120.png"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:zoom="6.8542215"
+     inkscape:cx="77.543453"
+     inkscape:cy="88.047928"
+     inkscape:window-width="1920"
+     inkscape:window-height="1051"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4" />
+  <!---->
+  <defs
+     data-v-fde0c5aa=""
+     id="defs1">
+    <!---->
+  </defs>
+  <rect
+     data-v-fde0c5aa=""
+     fill="#FFFFFF"
+     x="0"
+     y="0"
+     width="300"
+     height="300"
+     class="logo-background-square"
+     id="rect1"
+     style="fill:none" />
+  <defs
+     data-v-fde0c5aa=""
+     id="defs2">
+    <!---->
+  </defs>
+  <defs
+     data-v-fde0c5aa=""
+     id="defs3">
+    <!---->
+  </defs>
+  <g
+     id="g5"
+     transform="matrix(0.93249957,0,0,0.93249957,0.32002752,0.32002752)">
+    <circle
+       style="fill:#1a1a1a;fill-opacity:1;stroke:none;stroke-width:2.924"
+       id="path5"
+       cx="64"
+       cy="64"
+       r="63.342503" />
+    <g
+       data-v-fde0c5aa=""
+       id="ab112483-dca9-4ae5-8f89-2e5892272a9f"
+       stroke="none"
+       fill="#e98c00"
+       transform="matrix(1.1398822,0,0,1.1398822,7.0101217,0.25379779)"
+       style="fill:#ffd42a">
+      <path
+         d="m 34.426,47.647 c 0,-0.964 -0.782,-1.745 -1.746,-1.745 H 12.353 a 1.746,1.746 0 1 0 0,3.492 h 20.328 a 1.746,1.746 0 0 0 1.745,-1.747 z m 5.676,8.564 c 0,-0.965 -0.782,-1.746 -1.747,-1.746 H 18.028 a 1.746,1.746 0 1 0 0,3.492 h 20.327 c 0.964,0 1.747,-0.781 1.747,-1.746 z m 1.745,6.817 H 21.52 a 1.746,1.746 0 1 0 0,3.491 h 20.327 a 1.747,1.747 0 1 0 0,-3.491 z"
+         id="path3"
+         style="fill:#ffd42a" />
+      <path
+         d="m 94.969,38.731 a 1.979,1.979 0 0 0 0.018,-0.453 C 94.983,38.231 94.981,38.184 94.974,38.136 A 1.998,1.998 0 0 0 94.895,37.811 C 94.883,37.774 94.877,37.736 94.863,37.7 94.86,37.691 94.859,37.681 94.855,37.673 A 2.027,2.027 0 0 0 94.654,37.299 C 94.651,37.296 94.65,37.292 94.648,37.288 94.636,37.271 94.62,37.259 94.608,37.243 a 1.962,1.962 0 0 0 -0.249,-0.281 c -0.034,-0.032 -0.071,-0.06 -0.108,-0.09 A 1.913,1.913 0 0 0 94.001,36.7 c -0.044,-0.025 -0.087,-0.05 -0.132,-0.072 a 2.128,2.128 0 0 0 -0.3,-0.114 C 93.531,36.502 93.494,36.487 93.455,36.478 A 1.987,1.987 0 0 0 93.013,36.424 L 93.001,36.423 H 7 a 2,2 0 0 0 0,4 h 35.333 l 18.436,12.243 a 1.999,1.999 0 0 0 1.855,0.188 L 89.493,41.997 78.248,71.424 H 25.5 a 2,2 0 0 0 0,4 h 54.125 a 2,2 0 0 0 1.868,-1.286 l 13.375,-35 c 0.011,-0.027 0.012,-0.056 0.021,-0.084 0.035,-0.106 0.062,-0.213 0.08,-0.323 z M 62.104,48.75 49.564,40.423 h 33.148 z"
+         id="path4"
+         style="fill:#ffd42a" />
+    </g>
+  </g>
+  <!---->
+</svg>

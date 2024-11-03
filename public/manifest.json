@@ -1,18 +1,32 @@
 {
     "author": "judeiwuji@gmail.com",
     "name": "Smart Mail - Gmail Copilot",
-    "description": "Mail automation with summarising and reply suggestions",
+    "description": "Gmail automation with summarising and reply suggestions",
     "version": "0.1",
+    "background": {
+        "service_worker": "service-worker.js",
+        "type": "module"
+    },
     "icons": {
         "16": "images/icon-16.png",
         "48": "images/icon-48.png",
         "128": "images/icon-128.png"
     },
+    "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5tmYzV1VeI5k3uvMgMuZ47JXNyTTJlNkGfwznXvhrO1YTUCjLf8p1gXDaDKixHswRvpFLPaxs+dvKjAuWERYd11/QvjagTvccYuvMLupHVXrYoD68kACTt+d9+nBtN3mgAxrcch0EOiML3n3ChbV0iBZKV7h7QpzyivTylsOclGMzYaBCuitorgRRqVaXO46gY0nhprMJcoHTt1Q7tQFRDsIxfdvYb/x0Pu4ZDIx97BPksvrBOQKQER74caWFz+wtyArs6AUT1vhXqF6jl64rafDeqyUnzMCnTPwBMemc7XR0EP5B5kgMOynvn9mxPCSxRnFOWUydvzI6noRj3xS4wIDAQAB",
     "side_panel": {
         "default_path": "index.html"
     },
+    "oauth2": {
+        "client_id": "142654507053-2ilj16qv1ohhop119akiqetlgfr0sev3.apps.googleusercontent.com",
+        "scopes": [
+            "https://mail.google.com/"
+        ]
+    },
     "permissions": [
-        "sidePanel"
+        "sidePanel",
+        "activeTab",
+        "tabs",
+        "identity"
     ],
     "host_permissions": [
         "https://mail.google.com/"
