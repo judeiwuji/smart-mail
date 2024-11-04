@@ -12,10 +12,5 @@ import { RouterOutlet } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'smart-mail';
 
-  ngOnInit(): void {
-    //@ts-ignore
-    chrome.identity.getAuthToken({ interactive: true }, function (token) {
-      console.log(token);
-    });
-  }
+  ngOnInit(): void {}
 }
