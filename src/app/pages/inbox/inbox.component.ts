@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { AuthService } from '../../services/auth.service';
+import { GmailService } from '../../services/gmail.service';
 
 @Component({
   selector: 'app-inbox',
@@ -10,39 +11,15 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './inbox.component.css',
 })
 export class InboxComponent implements OnInit {
-  constructor(private readonly authService: AuthService) {}
+  constructor(
+    private readonly authService: AuthService,
+    private readonly gmailService: GmailService
+  ) {}
 
   ngOnInit(): void {
-    this.init();
-  }
-
-  init() {
-    const loadTimer = setInterval(async () => {
-      // @ts-ignore
-      if (!gapi) return;
-
-      clearInterval(loadTimer);
-
-      await this.gapiLoaded();
-      // @ts-ignore
-      const response = await gapi.client.request({
-        path: 'https://gmail.googleapis.com/gmail/v1/users/me/profile',
-      });
-
+    // this.init();
+    this.gmailService.getMessages().subscribe((response) => {
       console.log(response);
-    }, 1000);
-  }
-
-  gapiLoaded() {
-    return new Promise<void>((resolve, reject) => {
-      // @ts-ignore
-      gapi.load('client', () => {
-        // @ts-ignore
-        gapi.client.setToken({ access_token: this.authService.token });
-        // @ts-ignore
-        gapi.client.setApiKey(environment.API_KEY);
-        resolve();
-      });
     });
   }
 }

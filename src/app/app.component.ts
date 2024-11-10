@@ -10,7 +10,5 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.css',
 })
 export class AppComponent implements OnInit {
-  title = 'smart-mail';
-
   ngOnInit(): void {}
 }

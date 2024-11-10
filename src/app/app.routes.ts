@@ -3,10 +3,25 @@ import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
-    canActivate: [authGuard],
     path: '',
     loadComponent: () =>
+      import('./pages/authorize/authorize.component').then(
+        (m) => m.AuthorizeComponent
+      ),
+  },
+  {
+    canActivate: [authGuard],
+    path: 'inbox',
+    loadComponent: () =>
       import('./pages/inbox/inbox.component').then((m) => m.InboxComponent),
+  },
+  {
+    canActivate: [authGuard],
+    path: 'inbox/:id/message',
+    loadComponent: () =>
+      import('./pages/message/message.component').then(
+        (m) => m.MessageComponent
+      ),
   },
   {
     path: 'login',
