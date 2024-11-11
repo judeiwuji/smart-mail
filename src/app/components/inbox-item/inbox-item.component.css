@@ -1,0 +1,22 @@
+.inbox-btn {
+  border: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left;
+  transition: all 0.3s ease-in;
+}
+
+.inbox-btn:hover {
+  background-color: #eeeeee;
+}
+
+.inbox-btn .title,
+.inbox-btn .subtitle {
+  margin-bottom: 0;
+  font-size: 0.8rem;
+}
+
+.inbox-btn .title {
+  font-weight: 700;
+}

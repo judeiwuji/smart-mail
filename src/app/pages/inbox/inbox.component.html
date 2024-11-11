@@ -1,1 +1,42 @@
-<p>inbox works!</p>
+@if (hasMessages) {
+<div class="card">
+  <div class="card-header d-flex align-items-center justify-content-between">
+    <h5 class="mb-0">Inbox</h5>
+
+    <div class="action-menu d-flex align-items-center gap-3">
+      <button class="btn" type="button" (click)="refresh()">
+        <img src="/icons/refresh.svg" alt="Action: refresh" />
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    @for (message of messages; track $index) {
+    <app-inbox-item [message]="message"></app-inbox-item>
+    }
+  </div>
+  <div class="card-footer">
+    <p class="small text-center mb-0">
+      Powered by
+      <strong>
+        <a
+          href="https://plotterwave.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Plotterwave
+        </a>
+      </strong>
+    </p>
+  </div>
+</div>
+} @else {
+<div class="loader">
+  <div
+    class="spinner-border d-flex align-self-center"
+    style="width: 3rem; height: 3rem"
+    role="status"
+  >
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+}
