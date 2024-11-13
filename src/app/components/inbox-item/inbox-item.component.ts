@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Message } from '../../models/IMessage';
 import { SafePipe } from '../../pipes/safe.pipe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inbox-item',
@@ -11,4 +12,10 @@ import { SafePipe } from '../../pipes/safe.pipe';
 })
 export class InboxItemComponent {
   @Input() message!: Message;
+
+  constructor(private readonly router: Router) {}
+
+  onView() {
+    this.router.navigateByUrl(`/inbox/message/${this.message.id}`);
+  }
 }

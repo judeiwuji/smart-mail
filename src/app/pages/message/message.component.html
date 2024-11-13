@@ -1,1 +1,60 @@
-<p>message works!</p>
+<div class="card">
+  <div class="card-header d-flex align-items-center flex-nowrap">
+    <div class="action-menu d-flex align-items-center">
+      <button class="btn" type="button">
+        <img src="/icons/arrow-left.svg" alt="Action: go back" />
+      </button>
+    </div>
+    <!-- Tab -->
+    <div class="tab-menu">
+      <button
+        class="btn active"
+        (click)="selectTab()"
+        [ngClass]="{ active: activeTab === MessageTabs.Smart }"
+      >
+        Smart
+      </button>
+      <button
+        class="btn"
+        (click)="selectTab(MessageTabs.Original)"
+        [ngClass]="{ active: activeTab === MessageTabs.Original }"
+      >
+        Original
+      </button>
+    </div>
+    <!-- Tab -->
+    <div class="action-menu d-flex align-items-center gap-3">
+      <button class="btn" type="button">
+        <img src="/icons/reply.svg" alt="Action: reply" />
+      </button>
+    </div>
+  </div>
+  <div class="card-body">
+    <p class="title">Message subject</p>
+    <p class="content">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis porro
+      quibusdam natus tenetur doloremque modi repellendus necessitatibus
+      sapiente? Sed expedita possimus fugiat corrupti nobis aliquam, fuga,
+      repudiandae sequi necessitatibus, consectetur cupiditate neque soluta sit
+      incidunt molestias labore voluptatem a animi dolore amet doloribus quo
+      rerum ipsa dolorum. Dolorum atque ipsa itaque aspernatur, consequuntur
+      quaerat tenetur consectetur vel nostrum, rerum voluptatum recusandae.
+      Recusandae cupiditate rerum illum explicabo, magni ad qui sed laboriosam
+      reiciendis modi numquam! Blanditiis, saepe est, quo molestiae assumenda
+      sequi dolorem minus asperiores quibusdam voluptatem excepturi deleniti
+      inventore consectetur. Reiciendis praesentium ex porro ad in tempora illo,
+      fuga mollitia.
+    </p>
+    <div class="d-grid my-3">
+      <button class="btn btn-light btn-rounded">
+        <div class="d-flex justify-content-center align-items-center gap-3">
+          <img src="/icons/reply.svg" alt="Action: reply" />
+          <span>Reply</span>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div class="card-footer">
+    <app-footer></app-footer>
+  </div>
+</div>

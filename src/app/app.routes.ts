@@ -17,7 +17,7 @@ export const routes: Routes = [
   },
   {
     canActivate: [authGuard],
-    path: 'inbox/:id/message',
+    path: 'inbox/message/:id',
     loadComponent: () =>
       import('./pages/message/message.component').then(
         (m) => m.MessageComponent

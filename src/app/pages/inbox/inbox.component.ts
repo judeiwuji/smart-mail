@@ -8,11 +8,12 @@ import {
 } from '../../models/IMessage';
 import { Base64 } from 'js-base64';
 import { InboxItemComponent } from '../../components/inbox-item/inbox-item.component';
+import { FooterComponent } from '../../components/footer/footer.component';
 
 @Component({
   selector: 'app-inbox',
   standalone: true,
-  imports: [InboxItemComponent],
+  imports: [InboxItemComponent, FooterComponent],
   templateUrl: './inbox.component.html',
   styleUrl: './inbox.component.css',
 })
@@ -40,6 +41,7 @@ export class InboxComponent implements OnInit {
 
   normalizeMessage(message: MessageResponse) {
     const parsed: Message = {
+      id: message.id,
       body: '',
       sender: '',
       subject: '',

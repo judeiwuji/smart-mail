@@ -1,4 +1,4 @@
-<div class="btn inbox-btn" role="button">
+<div class="btn inbox-btn" role="button" (click)="onView()">
   <p class="title text-truncate">{{ message.subject }}</p>
   <p class="subtitle text-truncate" [innerHTML]="message.snippet | safe"></p>
 </div>

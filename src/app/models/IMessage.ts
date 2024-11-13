@@ -26,6 +26,7 @@ export interface MessagePayload {
 }
 
 export interface Message {
+  id: string;
   body: string;
   subject: string;
   sender: string;
