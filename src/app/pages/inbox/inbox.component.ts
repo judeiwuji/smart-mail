@@ -11,11 +11,12 @@ import { InboxItemComponent } from '../../components/inbox-item/inbox-item.compo
 import { FooterComponent } from '../../components/footer/footer.component';
 import { IThread, IThreadResponse } from '../../models/IThread';
 import { IUser } from '../../models/IUser';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-inbox',
   standalone: true,
-  imports: [InboxItemComponent, FooterComponent],
+  imports: [InboxItemComponent, FooterComponent, NgbTooltipModule],
   templateUrl: './inbox.component.html',
   styleUrl: './inbox.component.css',
 })

@@ -1,0 +1,15 @@
+.avatar-pane {
+  --avatar-bg-color: #000000;
+  --avatar-color: #ffffff;
+  --size: 2.2em;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background-color: var(--avatar-bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--avatar-color);
+}

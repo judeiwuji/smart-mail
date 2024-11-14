@@ -25,6 +25,6 @@ export class InboxItemComponent {
   }
 
   onView() {
-    this.router.navigateByUrl(`/inbox/message/${this.thread.id}`);
+    this.router.navigateByUrl(`/inbox/conversation/${this.thread.id}`);
   }
 }

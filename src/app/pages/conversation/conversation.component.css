@@ -1,0 +1,48 @@
+.action-menu button {
+  --size: 1.5em;
+  background-color: transparent;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-menu button:hover,
+.action-menu button:focus {
+  background-color: #ffffff;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+button img {
+  --size: 1.15em;
+  width: var(--size);
+  height: var(--size);
+}
+
+.card {
+  height: 100vh;
+}
+
+.card .card-body {
+  /* --bs-card-spacer-x: 0;
+    --bs-card-spacer-y: 0; */
+  height: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 5px;
+}
+
+.card .card-header .title {
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+.card .card-body .content {
+  font-size: 0.85rem;
+  margin-bottom: 0;
+}

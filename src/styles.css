@@ -2,3 +2,9 @@
 .btn-rounded {
   border-radius: 20px;
 }
+
+.page-title {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}

@@ -17,10 +17,10 @@ export const routes: Routes = [
   },
   {
     canActivate: [authGuard],
-    path: 'inbox/message/:id',
+    path: 'inbox/conversation/:id',
     loadComponent: () =>
-      import('./pages/message/message.component').then(
-        (m) => m.MessageComponent
+      import('./pages/conversation/conversation.component').then(
+        (m) => m.ConversationComponent
       ),
   },
   {

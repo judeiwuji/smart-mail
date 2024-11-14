@@ -1,0 +1,15 @@
+<div
+  class="message-pane d-flex justify-content-start gap-2 current"
+  [ngClass]="{ current: isCurrent }"
+>
+  <div class="card message-card">
+    <div class="card-body">hello there, how are you doing?</div>
+
+    <div class="card-footer d-flex align-items-center gap-1">
+      <button class="btn">Summarize</button>
+      <div class="divider"></div>
+      <span>10:31AM</span>
+    </div>
+  </div>
+  <app-avatar></app-avatar>
+</div>
