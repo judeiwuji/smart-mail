@@ -1,4 +1,4 @@
-@if (hasMessages) {
+@if (hasThreads) {
 <div class="card">
   <div class="card-header d-flex align-items-center justify-content-between">
     <h5 class="mb-0">Inbox</h5>
@@ -10,8 +10,8 @@
     </div>
   </div>
   <div class="card-body">
-    @for (message of messages; track $index) {
-    <app-inbox-item [message]="message"></app-inbox-item>
+    @for (thread of threads; track $index) {
+    <app-inbox-item [thread]="thread"></app-inbox-item>
     }
   </div>
   <div class="card-footer">

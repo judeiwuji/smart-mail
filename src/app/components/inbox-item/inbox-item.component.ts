@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Message } from '../../models/IMessage';
+import { IMessage } from '../../models/IMessage';
 import { SafePipe } from '../../pipes/safe.pipe';
 import { Router } from '@angular/router';
+import { IThread } from '../../models/IThread';
 
 @Component({
   selector: 'app-inbox-item',
@@ -11,11 +12,19 @@ import { Router } from '@angular/router';
   styleUrl: './inbox-item.component.css',
 })
 export class InboxItemComponent {
-  @Input() message!: Message;
+  @Input() thread!: IThread;
 
   constructor(private readonly router: Router) {}
 
+  get subject() {
+    return this.thread.subject || 'No Subject';
+  }
+
+  get snippet() {
+    return `${this.thread.sender.name}: ${this.thread.snippet}`;
+  }
+
   onView() {
-    this.router.navigateByUrl(`/inbox/message/${this.message.id}`);
+    this.router.navigateByUrl(`/inbox/message/${this.thread.id}`);
   }
 }

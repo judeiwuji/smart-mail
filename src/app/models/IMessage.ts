@@ -1,34 +1,35 @@
-export interface MessageContainerResponse {
+export interface IMessageContainerResponse {
   messages: { id: string; threadId: string }[];
   nextPageToken: string;
   resultSizeEstimate: number;
 }
 
-export interface MessageResponse {
+export interface IMessageResponse {
   id: string;
   threadId: string;
   labelIds: [string];
   snippet: string;
   historyId: string;
   internalDate: string;
-  payload: MessagePayload;
+  payload: IMessagePayload;
   sizeEstimate: number;
   raw: string;
 }
 
-export interface MessagePayload {
+export interface IMessagePayload {
   body: { data: string; size: number };
   headers: { name: string; value: string }[];
   filename: string;
   mimeType: string;
   partId: string;
-  parts: MessagePayload[];
+  parts: IMessagePayload[];
 }
 
-export interface Message {
+export interface IMessage {
   id: string;
   body: string;
   subject: string;
   sender: string;
   snippet: string;
+  threadId: string;
 }
