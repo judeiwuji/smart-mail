@@ -1,19 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { GmailService } from '../../services/gmail.service';
+import { GmailService } from '../../shared/services/gmail.service';
 import { combineLatest } from 'rxjs';
 import {
   IMessage,
   IMessagePayload,
   IMessageResponse,
-} from '../../models/IMessage';
+} from '../../shared/models/IMessage';
 import { Base64 } from 'js-base64';
 import { InboxItemComponent } from '../../components/inbox-item/inbox-item.component';
 import { FooterComponent } from '../../components/footer/footer.component';
-import { IThread, IThreadResponse } from '../../models/IThread';
-import { IUser } from '../../models/IUser';
+import { IThread, IThreadResponse } from '../../shared/models/IThread';
+import { IUser } from '../../shared/models/IUser';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
-import { ThreadService } from '../../services/thread.service';
-import { MessageService } from '../../services/message.service';
+import { ThreadService } from '../../shared/services/thread.service';
+import { MessageService } from '../../shared/services/message.service';
+import { AuthService } from '../../shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-inbox',
@@ -27,13 +29,25 @@ export class InboxComponent implements OnInit {
   threads: IThread[] = [];
 
   constructor(
+    private readonly authService: AuthService,
     private readonly gmailService: GmailService,
     private readonly messageService: MessageService,
+    private readonly router: Router,
     private readonly threadService: ThreadService
   ) {}
 
   ngOnInit(): void {
-    this.loadThreadsAndMessages();
+    this.threadService.findMany().subscribe({
+      next: (threads) => {
+        if (threads.length === 0) {
+          this.loadThreadsAndMessages();
+          return;
+        }
+
+        this.threads = threads;
+      },
+      error: (error) => console.log(error),
+    });
   }
 
   get hasMessages() {
@@ -46,11 +60,17 @@ export class InboxComponent implements OnInit {
 
   htmlToPlainText(html: string) {
     let text = '';
-    const container = document.createElement('div');
-    container.innerHTML = html;
-    container.querySelectorAll(':not(script):not(style)').forEach((element) => {
-      text += (element as HTMLElement).innerText;
-    });
+    try {
+      const container = document.createElement('div');
+      container.innerHTML = html;
+      container
+        .querySelectorAll(':not(script):not(style)')
+        .forEach((element) => {
+          text += (element as HTMLElement).innerText;
+        });
+    } catch (error) {
+      console.log(error);
+    }
     return text;
   }
 
@@ -129,27 +149,25 @@ export class InboxComponent implements OnInit {
     return listOfText;
   }
 
-  // loadMessages() {
-  //   this.messages = [];
-  //   this.gmailService.getMessages().subscribe((response) => {
-  //     if (response) {
-  //       const messages = response.messages.map((message) =>
-  //         this.gmailService.getMessage(message.id)
-  //       );
-
-  //       combineLatest(messages).subscribe((allMessages) => {
-  //         this.messages = allMessages.map((d) => this.normalizeMessage(d));
-  //       });
-  //     }
-  //   });
-  // }
-
   refresh() {
     this.threads = [];
-    this.loadThreadsAndMessages();
+    combineLatest([
+      this.threadService.clear(),
+      this.messageService.clear(),
+    ]).subscribe(() => {
+      this.loadThreadsAndMessages();
+    });
   }
 
-  loadThreadsAndMessages() {
+  async loadThreadsAndMessages() {
+    //@ts-ignore
+    const result = await chrome.identity.getAuthToken({});
+    this.authService.token = result.token;
+    if (!this.authService) {
+      this.router.navigateByUrl('/login');
+      return;
+    }
+
     this.gmailService.getThreads().subscribe((response) => {
       if (response) {
         const threads = response.threads.map((thread) =>
@@ -162,11 +180,13 @@ export class InboxComponent implements OnInit {
             const messageCount = allThreads[index].messages.length;
             return this.normalizeThread(thread, message, messageCount);
           });
+
           this.threadService.insertMany(this.threads);
           const messages = allThreads
             .map((thread) => thread.messages)
             .flat(1)
             .map((d) => this.normalizeMessage(d));
+
           this.messageService.insertMany(messages);
         });
       }

@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { authGuard } from './guards/auth.guard';
+import { authGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -17,7 +17,7 @@ export const routes: Routes = [
   },
   {
     canActivate: [authGuard],
-    path: 'inbox/conversation/:id',
+    path: 'inbox/conversation/:threadId',
     loadComponent: () =>
       import('./pages/conversation/conversation.component').then(
         (m) => m.ConversationComponent

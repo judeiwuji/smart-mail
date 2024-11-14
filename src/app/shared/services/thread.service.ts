@@ -31,7 +31,7 @@ export class ThreadService implements IStorage {
     );
   }
 
-  findMany(compare: ((value: any) => boolean) | undefined) {
+  findMany(compare?: (value: any) => boolean) {
     if (compare) {
       return this.dbService
         .getAll<IThread>(this.store)
@@ -45,6 +45,6 @@ export class ThreadService implements IStorage {
   }
 
   clear() {
-    this.dbService.clear(this.store);
+    return this.dbService.clear(this.store);
   }
 }

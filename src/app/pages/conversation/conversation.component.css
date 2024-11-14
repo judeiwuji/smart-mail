@@ -34,6 +34,7 @@ button img {
   display: flex;
   flex-direction: column-reverse;
   gap: 5px;
+  background-color: #f1f1f1;
 }
 
 .card .card-header .title {
@@ -45,4 +46,9 @@ button img {
 .card .card-body .content {
   font-size: 0.85rem;
   margin-bottom: 0;
+}
+
+.card .card-footer textarea {
+  resize: none;
+  font-size: 0.8rem;
 }

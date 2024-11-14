@@ -6,14 +6,19 @@
       </button>
       <h5 class="mb-0 page-title">Conversation</h5>
     </div>
-    <p class="title">Message subject</p>
+    <p class="title">{{ subject }}</p>
   </div>
   <div class="card-body">
     @for (message of messages; track $index) {
-    <app-message></app-message>
+    <app-message [message]="message"></app-message>
     }
   </div>
   <div class="card-footer">
-    <app-footer></app-footer>
+    <textarea
+      class="form-control"
+      cols="1"
+      rows="1"
+      placeholder="Reply"
+    ></textarea>
   </div>
 </div>

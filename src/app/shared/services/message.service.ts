@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { IStorage } from '../models/IStorage';
 import { IMessage } from '../models/IMessage';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
-import { filter, tap } from 'rxjs';
+import { filter, map, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -26,11 +26,11 @@ export class MessageService implements IStorage {
     );
   }
 
-  findMany(compare: ((value: any) => boolean) | undefined): unknown {
+  findMany(compare?: (value: IMessage) => boolean) {
     if (compare) {
       return this.dbService
         .getAll<IMessage>(this.store)
-        .pipe(filter((message) => compare(message)));
+        .pipe(map((messages) => messages.filter(compare)));
     }
     return this.dbService.getAll<IMessage>(this.store);
   }
