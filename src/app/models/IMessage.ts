@@ -1,3 +1,5 @@
+import { IUser } from './IUser';
+
 export interface IMessageContainerResponse {
   messages: { id: string; threadId: string }[];
   nextPageToken: string;
@@ -27,9 +29,10 @@ export interface IMessagePayload {
 
 export interface IMessage {
   id: string;
+  threadId: string;
   body: string;
   subject: string;
-  sender: string;
+  sender: IUser;
   snippet: string;
-  threadId: string;
+  timestamp: number;
 }

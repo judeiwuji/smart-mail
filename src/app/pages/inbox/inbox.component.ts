@@ -12,6 +12,8 @@ import { FooterComponent } from '../../components/footer/footer.component';
 import { IThread, IThreadResponse } from '../../models/IThread';
 import { IUser } from '../../models/IUser';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { ThreadService } from '../../services/thread.service';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-inbox',
@@ -24,10 +26,14 @@ export class InboxComponent implements OnInit {
   messages: IMessage[] = [];
   threads: IThread[] = [];
 
-  constructor(private readonly gmailService: GmailService) {}
+  constructor(
+    private readonly gmailService: GmailService,
+    private readonly messageService: MessageService,
+    private readonly threadService: ThreadService
+  ) {}
 
   ngOnInit(): void {
-    this.loadThreads();
+    this.loadThreadsAndMessages();
   }
 
   get hasMessages() {
@@ -48,21 +54,24 @@ export class InboxComponent implements OnInit {
     return text;
   }
 
+  findFromHeader(headers: { value: string; name: string }[], key: string) {
+    return headers.find(({ name }) => name.toLowerCase() === key)?.value ?? '';
+  }
+
   normalizeMessage(message: IMessageResponse) {
     const parsed: IMessage = {
       id: message.id,
       body: '',
-      sender: '',
+      sender: { email: '', name: '' },
       subject: '',
       snippet: this.trim(message.snippet ?? ''),
       threadId: message.threadId,
+      timestamp: Number(message.internalDate),
     };
-
-    for (let meta of message.payload.headers) {
-      if (meta.name === 'Subject') parsed.subject = meta.value;
-      if (meta.name === 'From') parsed.sender = meta.value;
-    }
-
+    parsed.subject = this.findFromHeader(message.payload.headers, 'subject');
+    parsed.sender = this.normalizeUser(
+      this.findFromHeader(message.payload.headers, 'from')
+    );
     parsed.body = this.trim(this.partWalker([message.payload]).at(0) ?? '');
     return parsed;
   }
@@ -137,10 +146,10 @@ export class InboxComponent implements OnInit {
 
   refresh() {
     this.threads = [];
-    this.loadThreads();
+    this.loadThreadsAndMessages();
   }
 
-  loadThreads() {
+  loadThreadsAndMessages() {
     this.gmailService.getThreads().subscribe((response) => {
       if (response) {
         const threads = response.threads.map((thread) =>
@@ -153,7 +162,12 @@ export class InboxComponent implements OnInit {
             const messageCount = allThreads[index].messages.length;
             return this.normalizeThread(thread, message, messageCount);
           });
-          console.log(this.threads);
+          this.threadService.insertMany(this.threads);
+          const messages = allThreads
+            .map((thread) => thread.messages)
+            .flat(1)
+            .map((d) => this.normalizeMessage(d));
+          this.messageService.insertMany(messages);
         });
       }
     });
