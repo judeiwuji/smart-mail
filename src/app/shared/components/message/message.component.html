@@ -4,10 +4,22 @@
 >
   @if (!isCurrent) { <app-avatar [user]="message.sender"></app-avatar> }
   <div class="card message-card">
+    @if (showSummary && summary) {
+    <div class="card-body" [innerHTML]="summary | linkify"></div>
+    } @else {
     <div class="card-body" [innerHTML]="message.body | linkify"></div>
+    }
 
     <div class="card-footer d-flex align-items-center gap-1">
-      <button class="btn">Summarize</button>
+      <button type="button" class="btn" (click)="summarize()">
+        @if (processing) {
+        <div class="spinner-grow spinner-grow-sm" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        } @else {
+        {{ summarizeLabel | titlecase }}
+        }
+      </button>
       <div class="divider"></div>
       <span>{{ time | date : "h:mm a" }}</span>
     </div>

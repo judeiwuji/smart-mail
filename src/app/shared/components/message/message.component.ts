@@ -1,22 +1,26 @@
 import { Component, Input } from '@angular/core';
 import { AvatarComponent } from '../avatar/avatar.component';
-import { IMessage } from '../../shared/models/IMessage';
-import { IUser } from '../../shared/models/IUser';
-import { DatePipe, NgClass } from '@angular/common';
-import { LinkifyPipe } from '../../shared/pipes/linkify.pipe';
-import { SafePipe } from '../../shared/pipes/safe.pipe';
-import { ShowdownPipe } from '../../shared/pipes/showdown.pipe';
+import { IMessage } from '../../models/IMessage';
+import { IUser } from '../../models/IUser';
+import { DatePipe, NgClass, TitleCasePipe } from '@angular/common';
+import { LinkifyPipe } from '../../pipes/linkify.pipe';
+import { SummarizeService } from '../../services/summarize.service';
 
 @Component({
   selector: 'app-message',
   standalone: true,
-  imports: [AvatarComponent, NgClass, LinkifyPipe, DatePipe],
+  imports: [AvatarComponent, NgClass, LinkifyPipe, DatePipe, TitleCasePipe],
   templateUrl: './message.component.html',
   styleUrl: './message.component.css',
 })
 export class MessageComponent {
   @Input({ required: true }) message!: IMessage;
   public user: IUser = { name: 'Jude Iwuji', email: 'judeiwuji@gmail.com' };
+  public processing = false;
+  public summary?: string;
+  public showSummary = false;
+
+  constructor(private summarizeService: SummarizeService) {}
 
   get isCurrent() {
     return this.message.sender.email === this.user.email;
@@ -24,5 +28,26 @@ export class MessageComponent {
 
   get time() {
     return this.message.timestamp;
+  }
+
+  get summarizeLabel() {
+    return this.showSummary ? 'Hide Summary' : 'Summarize';
+  }
+
+  summarize() {
+    if (this.summary) {
+      this.showSummary = !this.showSummary;
+      return;
+    }
+
+    if (this.processing) return;
+    this.processing = true;
+    this.summarizeService
+      .summarize(this.message.body)
+      .then((result) => {
+        this.summary = result;
+        this.showSummary = true;
+      })
+      .finally(() => (this.processing = false));
   }
 }

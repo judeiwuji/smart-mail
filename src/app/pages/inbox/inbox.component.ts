@@ -7,8 +7,8 @@ import {
   IMessageResponse,
 } from '../../shared/models/IMessage';
 import { Base64 } from 'js-base64';
-import { InboxItemComponent } from '../../components/inbox-item/inbox-item.component';
-import { FooterComponent } from '../../components/footer/footer.component';
+import { InboxItemComponent } from '../../shared/components/inbox-item/inbox-item.component';
+import { FooterComponent } from '../../shared/components/footer/footer.component';
 import { IThread, IThreadResponse } from '../../shared/models/IThread';
 import { IUser } from '../../shared/models/IUser';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';

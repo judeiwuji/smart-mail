@@ -43,6 +43,11 @@
   border-color: transparent;
 }
 
+.message-card .card-footer .spinner-grow-sm {
+  width: var(--font-size) !important;
+  height: var(--font-size) !important;
+}
+
 .message-pane.current .message-card .card-body {
   background-color: #703eff;
   border-bottom-left-radius: 10px;

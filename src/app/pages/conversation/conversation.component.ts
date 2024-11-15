@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FooterComponent } from '../../components/footer/footer.component';
-import { MessageComponent } from '../../components/message/message.component';
+import { MessageComponent } from '../../shared/components/message/message.component';
 import { MessageService } from '../../shared/services/message.service';
 import { Subject, takeUntil } from 'rxjs';
 import { IMessage } from '../../shared/models/IMessage';
@@ -11,7 +10,7 @@ import { ThreadService } from '../../shared/services/thread.service';
 @Component({
   selector: 'app-conversation',
   standalone: true,
-  imports: [FooterComponent, MessageComponent],
+  imports: [MessageComponent],
   templateUrl: './conversation.component.html',
   styleUrl: './conversation.component.css',
 })

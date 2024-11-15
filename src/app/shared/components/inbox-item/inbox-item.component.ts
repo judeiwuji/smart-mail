@@ -1,8 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { IMessage } from '../../shared/models/IMessage';
-import { SafePipe } from '../../shared/pipes/safe.pipe';
+import { SafePipe } from '../../pipes/safe.pipe';
 import { Router } from '@angular/router';
-import { IThread } from '../../shared/models/IThread';
+import { IThread } from '../../models/IThread';
 
 @Component({
   selector: 'app-inbox-item',

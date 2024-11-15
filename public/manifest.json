@@ -16,6 +16,10 @@
     "side_panel": {
         "default_path": "index.html"
     },
+    "trial_tokens": [
+        "Ah/VMgDHWXG7+o3ZnJ/GF2h1KOPx7wIH5qBi4LYghsGuD3PMEbp1xS39s9NxA76nGC6ZvAP1rbrRavrjzbKRLAEAAABzeyJvcmlnaW4iOiJjaHJvbWUtZXh0ZW5zaW9uOi8vYmtnZ2ViaGdqaW5pZGZoaWZuamdoYmFwaGtnbm1kaWsiLCJmZWF0dXJlIjoiQUlTdW1tYXJpemF0aW9uQVBJIiwiZXhwaXJ5IjoxNzUzMTQyNDAwfQ==",
+        "As2NOc2u5Rzxe9IJ9z/e7TPMzW799eVqopCiBPPC7Qz4b+rJaq1tIB2WkcIrx92ITP5G2GXJ+4kQIQo2qhlwnwIAAAB4eyJvcmlnaW4iOiJjaHJvbWUtZXh0ZW5zaW9uOi8vYmtnZ2ViaGdqaW5pZGZoaWZuamdoYmFwaGtnbm1kaWsiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElGb3JFeHRlbnNpb24iLCJleHBpcnkiOjE3NjA0ODYzOTl9"
+    ],
     "oauth2": {
         "client_id": "142654507053-2ilj16qv1ohhop119akiqetlgfr0sev3.apps.googleusercontent.com",
         "scopes": [
