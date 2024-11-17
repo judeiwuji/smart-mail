@@ -192,4 +192,8 @@ export class InboxComponent implements OnInit {
       }
     });
   }
+
+  gotoComposer() {
+    this.router.navigateByUrl('/composer');
+  }
 }

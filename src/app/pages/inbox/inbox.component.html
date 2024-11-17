@@ -19,6 +19,12 @@
     @for (thread of threads; track $index) {
     <app-inbox-item [thread]="thread"></app-inbox-item>
     }
+
+    <!-- Compose Btn-->
+    <button type="button" class="btn composer-btn" (click)="gotoComposer()">
+      <img src="/icons/comment-plus-fill.svg" alt="" />
+    </button>
+    <!-- Composer Btn -->
   </div>
   <div class="card-footer">
     <app-footer></app-footer>

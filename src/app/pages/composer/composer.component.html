@@ -1,1 +1,43 @@
-<p>composer works!</p>
+<div class="card composer-card">
+  <div class="card-header d-flex flex-column gap-2">
+    <div class="action-menu d-flex align-items-center gap-2">
+      <button class="btn" type="button" (click)="goBack()">
+        <img src="/icons/arrow-left.svg" alt="Action: go back" />
+      </button>
+      <h5 class="mb-0 page-title">Composer</h5>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="d-flex flex-column gap-1 mb-3">
+      <input type="text" placeholder="To" class="form-control" />
+      <input type="text" placeholder="Subject" class="form-control" />
+    </div>
+    <textarea
+      class="form-control text-editor"
+      cols="1"
+      rows="1"
+      placeholder="What is on your mind?&#10;&#10;Instruct Smart to compose an email for you&#10;&#10;For example:&#10;&#10;* Inform Benard I won't be available in the office today. He is my coworker"
+    ></textarea>
+  </div>
+  <div class="card-footer">
+    <div class="btn-group" role="group" aria-label="Email composer and sender">
+      <button type="button" class="btn btn-primary">Compose</button>
+
+      <div class="btn-group" role="group">
+        <button
+          id="btnActionGroup"
+          type="button"
+          class="btn btn-primary dropdown-toggle"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <img src="/icons/chevron-down.svg" alt="" />
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="btnActionGroup">
+          <li><a class="dropdown-item" href="#">Compose</a></li>
+          <li><a class="dropdown-item" href="#">Send</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

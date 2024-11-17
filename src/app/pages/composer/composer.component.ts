@@ -5,8 +5,10 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './composer.component.html',
-  styleUrl: './composer.component.css'
+  styleUrl: './composer.component.css',
 })
 export class ComposerComponent {
-
+  public goBack(): void {
+    window.history.back();
+  }
 }

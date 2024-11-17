@@ -39,10 +39,30 @@
   --bs-card-spacer-y: 0;
   height: 100%;
   overflow: auto;
+  position: relative;
 }
 
 .card .card-body > *:not(:last-child) {
   border-bottom: 1px solid #eeeeee;
   display: flex;
   flex-direction: column;
+}
+
+.composer-btn {
+  background-color: #4151fe;
+  border-radius: 10px;
+  position: fixed;
+  bottom: 5rem;
+  right: 2rem;
+}
+
+.composer-btn:active {
+  background-color: #5765ff;
+  border-color: transparent;
+}
+
+.composer-btn img {
+  --size: 2em;
+  width: var(--size);
+  height: var(--size);
 }

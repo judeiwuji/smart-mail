@@ -48,6 +48,7 @@ export class MessageComponent {
         this.summary = result;
         this.showSummary = true;
       })
+      .catch((reason) => console.log(reason))
       .finally(() => (this.processing = false));
   }
 }

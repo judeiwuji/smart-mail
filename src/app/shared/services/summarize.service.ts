@@ -7,34 +7,44 @@ export class SummarizeService {
   constructor() {}
 
   private async create(): Promise<ai.summarizer.AISummarizer> {
-    if (!window.ai && !ai.summarizer) {
-      throw new Error('AI not available on your device');
+    if (!window.ai || !window.ai.summarizer) {
+      throw new Error('AI Summarization is not supported in this browser');
     }
-    return new Promise(async (resolve, reject) => {
-      const canSummarize = await ai.summarizer.capabilities();
-      if (canSummarize && canSummarize.available !== 'no') {
-        if (canSummarize.available === 'readily') {
-          resolve(await ai.summarizer.create());
-        } else {
-          const summarizer = await ai.summarizer.create();
-          summarizer.addEventListener('downloadprogress', async (e) => {
-            console.log(e.loaded, e.total);
-            if (e.loaded === e.total) {
-              await summarizer.ready;
-              resolve(summarizer);
-            }
-          });
-        }
-      } else {
-        reject('AI not available on your device');
-      }
-    });
+
+    const canSummarize = await ai.summarizer.capabilities();
+
+    if (canSummarize.available === 'no') {
+      throw new Error('AI Summarization is not supported');
+    }
+
+    const config: ai.summarizer.Config = {
+      format: 'plain-text',
+      length: 'short',
+      type: 'key-points',
+    };
+
+    const logger = (message: string, progress: number) => console.log(message);
+
+    const summarizationSession = await ai.summarizer.create(config, logger);
+
+    if (canSummarize.available === 'after-download') {
+      summarizationSession.addEventListener('downloadprogress', logger);
+      await summarizationSession.ready;
+    }
+    return summarizationSession;
   }
 
   async summarize(text: string) {
-    const summarizer = await this.create();
-    const result = await summarizer.summarize(text);
-    summarizer.destroy();
-    return result;
+    let summarizer: ai.summarizer.AISummarizer | null = null;
+    try {
+      summarizer = await this.create();
+      console.log(summarizer);
+      const result = await summarizer.summarize(text);
+      summarizer.destroy();
+      return result;
+    } catch (error) {
+      if (summarizer) summarizer.destroy();
+      throw error;
+    }
   }
 }
