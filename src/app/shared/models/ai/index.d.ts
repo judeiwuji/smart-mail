@@ -10,6 +10,7 @@ declare namespace ai.summarizer {
     type: 'key-points' | 'tl;dr' | 'teaser' | 'headline';
     format: 'markdown' | 'plain-text';
     length: 'short' | 'medium' | 'long';
+    sharedContext: string;
   }
   export class AISummarizer {
     public format: string;
@@ -31,4 +32,16 @@ declare namespace ai.summarizer {
     config: Config,
     cb?: (message: string, progress: number) => void
   ): Promise<AISummarizer>;
+}
+
+declare namespace ai.writer {
+  export interface Config {
+    tone: 'formal';
+  }
+
+  export class AIWriter {
+    public write(value: string): Promise<string>;
+  }
+
+  export function create(config: Config): Promise<AIWriter>;
 }

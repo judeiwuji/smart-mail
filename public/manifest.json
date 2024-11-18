@@ -33,7 +33,8 @@
         "identity",
         "webNavigation",
         "storage",
-        "scripting"
+        "scripting",
+        "aiLanguageModelOriginTrial"
     ],
     "host_permissions": [
         "https://mail.google.com/"

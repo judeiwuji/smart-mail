@@ -20,7 +20,8 @@ export class SummarizeService {
     const config: ai.summarizer.Config = {
       format: 'plain-text',
       length: 'short',
-      type: 'key-points',
+      type: 'headline',
+      sharedContext: 'an email',
     };
 
     const logger = (message: string, progress: number) => console.log(message);
