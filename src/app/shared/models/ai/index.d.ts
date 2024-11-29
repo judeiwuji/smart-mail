@@ -21,7 +21,7 @@ declare namespace ai.summarizer {
 
     public destroy(): void;
     public summarize(text: string): Promise<string>;
-    public summarizeStreaming(): Promise<any>;
+    public summarizeStreaming(text: string): ReadableStream;
     public addEventListener(
       event: string,
       cb: (message: string, progress: number) => void

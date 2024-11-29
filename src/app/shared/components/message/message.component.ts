@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AvatarComponent } from '../avatar/avatar.component';
 import { IMessage } from '../../models/IMessage';
 import { IUser } from '../../models/IUser';
 import { DatePipe, NgClass, TitleCasePipe } from '@angular/common';
 import { LinkifyPipe } from '../../pipes/linkify.pipe';
 import { SummarizeService } from '../../services/summarize.service';
+import { PromptService } from '../../services/prompt.service';
 
 @Component({
   selector: 'app-message',
@@ -13,14 +14,21 @@ import { SummarizeService } from '../../services/summarize.service';
   templateUrl: './message.component.html',
   styleUrl: './message.component.css',
 })
-export class MessageComponent {
+export class MessageComponent implements OnInit {
   @Input({ required: true }) message!: IMessage;
   public user: IUser = { name: 'Jude Iwuji', email: 'judeiwuji@gmail.com' };
   public processing = false;
   public summary?: string;
   public showSummary = false;
 
-  constructor(private summarizeService: SummarizeService) {}
+  constructor(
+    private summarizeService: SummarizeService,
+    private promptService: PromptService
+  ) {}
+
+  ngOnInit() {
+    this.promptService.reset();
+  }
 
   get isCurrent() {
     return this.message.sender.email === this.user.email;
