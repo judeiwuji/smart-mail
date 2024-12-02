@@ -90,7 +90,7 @@ class PromptService {
   ) {
     try {
       if (!this.session) {
-        this.initDefaults();
+        await this.initDefaults();
         this.session = await chrome.aiOriginTrial.languageModel.create({
           systemPrompt,
           temperature: this.config.sliderTemperature.value,

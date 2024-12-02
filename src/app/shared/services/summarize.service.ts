@@ -7,11 +7,11 @@ export class SummarizeService {
   constructor() {}
 
   private async create(): Promise<ai.summarizer.AISummarizer> {
-    if (!window.ai || !window.ai.summarizer) {
+    if (!self.ai || !self.ai.summarizer) {
       throw new Error('AI Summarization is not supported in this browser');
     }
 
-    const canSummarize = await ai.summarizer.capabilities();
+    const canSummarize = await self.ai.summarizer.capabilities();
     console.log(canSummarize);
     if (canSummarize.available === 'no') {
       throw new Error('AI Summarization is not supported');
@@ -26,7 +26,7 @@ export class SummarizeService {
 
     const logger = (message: string, progress: number) => console.log(message);
 
-    const summarizationSession = await ai.summarizer.create(config, logger);
+    const summarizationSession = await self.ai.summarizer.create(config, logger);
 
     if (canSummarize.available === 'after-download') {
       summarizationSession.addEventListener('downloadprogress', logger);

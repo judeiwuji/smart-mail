@@ -50,6 +50,14 @@ export class MessageComponent implements OnInit {
 
     if (this.processing) return;
     this.processing = true;
+    // @ts-ignore
+    // chrome.runtime.sendMessage(
+    //   { mode: 'summarize', text: this.message.body },
+    //   (response: any) => {
+    //     console.log(response);
+    //     this.processing = false;
+    //   }
+    // );
     this.summarizeService
       .summarize(this.message.body)
       .then((result) => {
